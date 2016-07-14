@@ -8,3 +8,8 @@ Created to hit elasticsearch with queries and grade the retrieved docs as releva
 3. npm install
 4. node server.js
 5. browse to localhost:3000
+6. Make sure you have a local instance of elastic search running on your PC!!
+
+
+# Relevance File
+A file called relevance.txt will be created in the project folder.
