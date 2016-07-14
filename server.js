@@ -11,12 +11,13 @@ app.use(express.static(__dirname + '/public'));
 
 
 
-var ipaddress = process.env.OPENSHIFT_NODEJS_IP;
-var port      = process.env.OPENSHIFT_NODEJS_PORT || 3000;
-
+var ipaddress  = process.env.OPENSHIFT_NODEJS_IP;
+var port       = process.env.OPENSHIFT_NODEJS_PORT || 3000;
+var assessorID = "user";
+var queryID = "1";
 app.listen(port, ipaddress);
 
-app.get("/api/search/:searchQuery",searchElastic);
+app.post("/api/search",searchElastic);
 app.post("/api/write",writeToFile);
 
 
@@ -36,7 +37,7 @@ function writeToFile (req, res){
                 }
             });
         } else {
-            fs.appendFile("relevance.txt","1 Dhruv "+hit._source.docno+" "+hit.relevance+"\n",function (err, doc) {
+            fs.appendFile("relevance.txt",queryID+" "+assessorID+" "+hit._source.docno+" "+hit.relevance+"\n",function (err, doc) {
                 if(err) {
                     console.log(err)
                 } else {
@@ -51,19 +52,14 @@ function writeToFile (req, res){
 
 
 function searchElastic (req, res){
-    var search_query = req.params.searchQuery;
+    var search = req.body;
+    var search_query = search.query;
+    assessorID = search.assessorID;
+    queryID = search.queryID
     console.log(search_query);
     var client = elasticsearch.Client({
         hosts: [
             '127.0.0.1:9200']});
-
-    // client.cluster.health(function (err, resp) {
-    //     if (err) {
-    //         console.error(err.message);
-    //     } else {
-    //         console.dir(resp);
-    //     }
-    // });
 
     client.search({
         index: 'newyork',

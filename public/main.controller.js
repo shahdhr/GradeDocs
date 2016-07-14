@@ -40,13 +40,17 @@
         ];
 
         function searchElastic(search) {
-            $http.get("/api/search/"+search.query)
-                .then(function (response) {
-                    if(response.data) {
-                        console.log(response.data.hits);
-                        vm.hits = response.data.hits
-                    }
-                })
+            if(search.query==null || search.assessorID==null || search.queryID == null) {
+                vm.alert = "All fields are compulsory"
+            } else {
+                $http.post("/api/search",search)
+                    .then(function (response) {
+                        if(response.data) {
+                            console.log(response.data.hits);
+                            vm.hits = response.data.hits
+                        }
+                    })
+            }
         }
 
         function submitScore(hit) {

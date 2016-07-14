@@ -18,10 +18,17 @@
 <body ng-controller="MainController as model" class="container">
 
 <h1>Mark Relevant Docs</h1>
-
+<div class="alert alert-danger" ng-show="model.alert">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+     {{model.alert}}
+</div>
 <div class="form-group">
-    <label for="searchBar">Enter Query Below</label>
+    <label for="searchBar">Query</label>
     <input type="text" placeholder="Search..." ng-model="model.search.query" class="form-control" id="searchBar"/>
+    <label for="searchBar">Assessor ID</label>
+    <input type="text" placeholder="Name of the assessor" ng-model="model.search.assessorID" class="form-control" id="assessorID"/>
+    <label for="searchBar">Query ID</label>
+    <input type="text" placeholder="If you have a query ID or else put any value" ng-model="model.search.queryID" class="form-control" id="queryID"/>
 </div>
 <button class="btn btn-default align"ng-click="model.searchElastic(model.search)">Search</button>
 <br/><br/>
