@@ -1,5 +1,5 @@
 # GradeDocs
-Created to hit elasticsearch with queries and grade the retrieved docs as relevant or not
+Created to hit locally running elasticsearch instance with queries and grade the retrieved docs as relevant or not
 
 # Steps to install
 
@@ -13,3 +13,8 @@ Created to hit elasticsearch with queries and grade the retrieved docs as releva
 
 # Relevance File
 A file called relevance.txt will be created in the project folder which will store your results.
+
+Scores : 
+Very Relevant : 2
+Relevant : 1
+Non relevant : 0
