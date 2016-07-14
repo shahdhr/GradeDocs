@@ -3,8 +3,8 @@ Created to hit elasticsearch with queries and grade the retrieved docs as releva
 
 # Steps to install
 
-1. git clone https://github.com/jannunzi/web-dev-template.git
-2. cd web-dev-template
+1. git clone https://github.com/shahdhr/GradeDocs.git
+2. cd UI-qrel
 3. npm install
 4. node server.js
 5. browse to localhost:3000
