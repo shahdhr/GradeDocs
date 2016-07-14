@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html ang="en" ng-app="QrelApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Mark Relevant Docs</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/1.2.4/ui-bootstrap-tpls.min.js"></script>
+    <script src="app.js"></script>
+    <script src="main.controller.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body ng-controller="MainController as model" class="container">
+
+<h1>Mark Relevant Docs</h1>
+
+<div class="form-group">
+    <label for="searchBar">Enter Query Below</label>
+    <input type="text" placeholder="Search..." ng-model="model.search.query" class="form-control" id="searchBar"/>
+</div>
+<button class="btn btn-default align"ng-click="model.searchElastic(model.search)">Search</button>
+<br/><br/>
+<div class="wrapper">
+    <ul class="properties_list" >
+        <li ng-repeat="hit in model.hits">
+            <a href="{{hit._source.rawUrl}}" target="_blank">
+                {{hit._source.title}}
+            </a><br/>
+            <div class="form-group">
+                <label>Relevance Score </label>
+                <div class="radio" ng-repeat="option in model.options">
+                    <label>
+                        <input type="radio" ng-model=hit.relevance ng-value=option.value >
+                        {{option.label}}
+                    </label>
+                </div>
+                <button class="btn btn-default align" ng-click="model.submitScore(hit)">Submit</button>
+            </div>
+
+        </li>
+        </ul>
+    </div>
+
+
+</body>
+</html>
