@@ -1,5 +1,7 @@
 # GradeDocs
-Created to hit locally running elasticsearch instance with queries and grade the retrieved docs as relevant or not
+
+GradeDocs in node.js and angualr.js project, created to hit locally running elasticsearch instance with queries and grade the retrieved docs as relevant or not.
+Results are stored in a text file which can later be processed and send to qrel script to calculate Average Precision, F1-precision, nDCG etc.
 
 # Steps to install
 
@@ -13,6 +15,10 @@ Created to hit locally running elasticsearch instance with queries and grade the
 
 # Relevance File
 A file called relevance.txt will be created in the project folder which will store your results.
+Format : 
+Each line in the file has four fields : 
+QueryID AssesorID DocNo Relevance-Score
+
 
 Scores : 
 Very Relevant : 2
