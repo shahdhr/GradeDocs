@@ -16,11 +16,10 @@ Results are stored in a text file which can later be processed and send to qrel 
 # Relevance File
 A file called relevance.txt will be created in the project folder which will store your results.
 * Format : 
-** Each line in the file has four fields : 
-  QueryID AssessorID DocNo Relevance-Score
+ Each line in the file has four fields : QueryID AssessorID DocNo Relevance-Score
 
 
-** Relevance-Scores : 
+* Relevance-Scores : 
   Very Relevant : 2
   Relevant : 1
   Non relevant : 0
