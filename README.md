@@ -12,4 +12,4 @@ Created to hit elasticsearch with queries and grade the retrieved docs as releva
 
 
 # Relevance File
-A file called relevance.txt will be created in the project folder.
+A file called relevance.txt will be created in the project folder which will store your results.
