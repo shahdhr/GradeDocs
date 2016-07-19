@@ -65,8 +65,8 @@ function searchElastic (req, res){
         index: 'newyork',
         size: 100,
         body: {
-            query: {
-                match_phrase: {
+            query_string: {
+                query: {
                     text: search_query
                 }
             }
