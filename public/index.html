@@ -36,7 +36,7 @@
     <ul class="properties_list" >
         <li ng-repeat="hit in model.hits">
             <a href="{{hit._source.rawUrl}}" target="_blank">
-                {{hit._source.title}}
+                {{hit._source.title}}<br>{{$index}}
             </a><br/>
             <div class="form-group">
                 <label>Relevance Score </label>
