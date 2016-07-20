@@ -62,12 +62,12 @@ function searchElastic (req, res){
             '127.0.0.1:9200']});
 
     client.search({
-        index: 'newyork',
-        size: 100,
+        index: 'chicago',
+        size: 150,
         body: {
-            query_string: {
-                query: {
-                    text: search_query
+            query: {
+                query_string: {
+                    query: search_query
                 }
             }
         }
