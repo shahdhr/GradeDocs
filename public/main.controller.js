@@ -54,7 +54,14 @@
         }
 
         function submitScore(hit) {
-            $http.post("/api/write",hit)
+            var hitThatMatter =  {
+                _source : {
+                    docno : hit._source.docno
+                },
+                relevance : hit.relevance
+            } ;
+
+            $http.post("/api/write",hitThatMatter)
         }
 
 

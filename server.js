@@ -29,7 +29,7 @@ function writeToFile (req, res){
     fs.stat("relevance.txt",function (err, stats) {
         if(err) {
             console.log("writing");
-            fs.writeFile("relevance.txt","1 Dhruv "+hit._source.docno+" "+hit.relevance+"\n",function (err, doc) {
+            fs.writeFileSync("relevance.txt",queryID+" "+assessorID+" "+hit._source.docno+" "+hit.relevance+"\n",function (err, doc) {
                 if(err) {
                     console.log(err)
                 } else {
@@ -63,7 +63,7 @@ function searchElastic (req, res){
 
     client.search({
         index: 'chicago',
-        size: 150,
+        size: 250,
         body: {
             query: {
                 query_string: {
